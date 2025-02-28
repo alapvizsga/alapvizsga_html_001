@@ -112,8 +112,12 @@ def test_feladat_10():
     target = None
 
     target = html_soup.find(class_="egynap")
+    children = target.findChild("div")
 
     assert isinstance(target, bs4.Tag), "Nincs egynap osztályú elem!"
     assert target.name == "div", "Az egynap osztályú elem nem div típusú!"
     assert target.find_previous_siblings()[0].name == "hr", "Helytelen az egynap elem elhelyezése!"
     assert target.find_previous_siblings()[1].name == "hr", "Helytelen az egynap elem elhelyezése!"
+
+    assert children.name == "div", "Nem div az egynap elem első eleme!"
+    assert children.find_next_sibling().name == "img", "Nem img az egynap elem második eleme!"
