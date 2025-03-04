@@ -4,7 +4,7 @@
 1. Állítsd be a hátteret **#EEFF66**, a összes szöveget **#000066** színűre! (1 pont)
 2. Állítsd az összes szöveget az oldalon dőltre! (1 pont)
 3. Az oldal törzse legyen 50%-os szélességű és legyen középre igazítva automatikus margóval! (1 pont)
-4. Hozz létre egyes szintű fejezetcímet **Heti étlap** szöveggel! (2 pont)
+4. Hozz létre egyes szintű fejezetcímet **Heti étlap** szöveggel, középre igazítva! (2 pont)
 5. Hozz létre egy div-et, és állítsd be rá a **hetek** osztályt! (2 pont)
 6. Hozz létre 3 új elemet a **hetek** div-ben a leírt sorrendben: (2 pont)
     - *Előző hét* tartalmú **link**
