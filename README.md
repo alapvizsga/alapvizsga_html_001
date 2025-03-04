@@ -1,5 +1,6 @@
 # Heti étlap 
-## Minden változtatást a *styles.css* fájlban végezz el!
+### Minden változtatást a *styles.css* fájlban végezz el!
+### Minden szöveget megtalálsz a szoveg.txt fájlban.
 
 1. Állítsd be a hátteret **#EEFF66**, a összes szöveget **#000066** színűre! (1 pont)
 2. Állítsd az összes szöveget az oldalon dőltre! (1 pont)
@@ -17,6 +18,9 @@
 10. Hozz létre egy **egynap** osztályú div-et, és hozz benne létre 2 elemet: (2 pont)
     - Egy div
     - Egy kép
+
+    Továbbá tartalmazzon az **egynap**-on belüli div egy **kettes szintű fejezetcímet**, és egy **rendezetlen listát**, **három** **lista elemmel**!
+
 11. Az **egynap** div-ben lévő elemek elrendezésére használj flexboxot úgy, hogy **csak** az **elemek között** legyen hely. (1 pont)
 12. Az **egynap** div-et másold be négyszer egymás után, hogy 5 db legyen belőle, illessz be közéjük egy-egy **hr** elemet! (2 pont)
 13. Az **egynap** div-ben lévő kép szélessége legyen 230 px. (1 pont)
@@ -35,7 +39,6 @@
     - 4.995 Ft
     - *üres*
     - 4.500 Ft
-
 20. Az **arak** osztályú **div**-re állíts be *grid* alapú rendezést 2 oszloppal, és 3 sorral, a sorok és oszlopok között kihagyott hely legyen 10-10 pixel. (2 pont)
 21. Az **arak** osztályú div szövege legyen félkövér és 24 pixel méretű. (2 pont)
 22. Az **arakcsik** osztályú div-nek a tartalmát rendezd flexbox-al úgy, hogy **csak** az **elemek között** legyen hely. (2 pont)
