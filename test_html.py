@@ -79,9 +79,12 @@ def test_feladat_6():
              ("span", "Aktuális hét"),
              ("a", "Következő hét")]
     
+    target = html_soup.find(class_="hetek")
+    assert isinstance(target, bs4.Tag), "Nincs hetek osztályú elem!"
+    
     for tag, text in elems:
-        assert html_soup.find(class_="hetek").find(name=tag) != None, f"Nem létezik {tag} típusú elem a .hetek div-ben!"
-        assert html_soup.find(class_="hetek").find(name="span") != None, f"Nem létezik olyan elem a .hetek div-ben, aminek a szövege '{text}' lenne!"
+        assert target.find(name=tag) != None, f"Nem létezik {tag} típusú elem a .hetek div-ben!"
+        assert target.find(name="span") != None, f"Nem létezik olyan elem a .hetek div-ben, aminek a szövege '{text}' lenne!"
 
 @pytest.mark.points(1)
 def test_feladat_7():
@@ -98,12 +101,14 @@ def test_feladat_9():
     prev_sibl = None #Előző element
     target = None #Keresett element
     next_sibl = None #Következő element
-
+    
     target = html_soup.find("hr")
+
+    assert isinstance(target, bs4.Tag), "Nem található hr elem az oldalon!"
+
     prev_sibl = target.find_previous_sibling()
     next_sibl = target.find_next_sibling()
 
-    assert isinstance(target, bs4.Tag), "Nem található hr elem az oldalon!"
     assert prev_sibl.get("class")[0] == "hetek", "Helytelen a hr elem elhelyezése!"
     assert next_sibl.name == "hr", "Hiányzik a második hr elem!"
 
@@ -121,3 +126,12 @@ def test_feladat_10():
 
     assert children.name == "div", "Nem div az egynap elem első eleme!"
     assert children.find_next_sibling().name == "img", "Nem img az egynap elem második eleme!"
+
+@pytest.mark.points(1)
+def test_feladat_11():
+    target = None
+    
+    target = html_soup.find(class_="egynap")
+    assert isinstance(target, bs4.Tag), "Nincs egynap osztályú elem!"
+
+    assert GetPropertyValue("egynap", "justify-content") == "space-between", "Helytelen az elrendezés módja, nem CSAK az elemek között van hely!"
