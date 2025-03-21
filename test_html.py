@@ -1,4 +1,4 @@
-import pytest, cssutils, os, bs4
+import cssutils, os, bs4
 
 def get_html():
     with open("index.html", encoding="utf-8") as f: #HTML fájl beolvasása
@@ -47,33 +47,27 @@ def GetPropertyValue(selector: str, propName: str):
     return next(x for x in css_list if x.selectorText == selector).style.getPropertyValue(propName) #Tulajdonság értékének visszadobása
 
 #Feladatok
-@pytest.mark.points(1)
 def test_feladat_1():
     assert GetPropertyValue("body", "color") == "#006", "Helytelen az oldal betűszíne!"
     assert GetPropertyValue("body", "background-color") == "#EF6", "Helytelen a beállított háttérszín!"
 
-@pytest.mark.points(1)
 def test_feladat_2():
     assert GetPropertyValue("body", "font-style") == "italic", "Nincs dőlt beállítás az oldalon!"
 
-@pytest.mark.points(1)
 def test_feladat_3():
     assert GetPropertyValue("body", "width") == "50%", "Helytelen az oldal szélessége!"
     assert GetPropertyValue("body", "margin") == "auto", "Nincs középre igazítva az oldal!" 
 
-@pytest.mark.points(2)
 def test_feladat_4():
     assert html_soup.find("h1") != None, "Nem létezik egyes szintű fejezetcím!"
     assert html_soup.find("h1").text == "Heti étlap", "Helytelen a cím szövege!"
     #Meg kell nézni, hogy hol van pontosan a h1, ebben az esetben a body-nak 
     #konkrét leszármazottja, és az első. (Mindkettőt tudja a bs4)
 
-@pytest.mark.points(2)
 def test_feladat_5():
     assert html_soup.find(class_="hetek") != None, "Nem létezik hetek osztály az oldalon!"
     assert html_soup.find(class_="hetek").name == "div", "A hetek osztályú elem nem div!"
 
-@pytest.mark.points(2)
 def test_feladat_6():
     elems = [("a", "Előző hét"),
              ("span", "Aktuális hét"),
@@ -86,17 +80,14 @@ def test_feladat_6():
         assert target.find(name=tag) != None, f"Nem létezik {tag} típusú elem a .hetek div-ben!"
         assert target.find(name="span") != None, f"Nem létezik olyan elem a .hetek div-ben, aminek a szövege '{text}' lenne!"
 
-@pytest.mark.points(1)
 def test_feladat_7():
     assert GetPropertyValue(".hetek", "display") == "flex", "Nincs flex rendezés a .hetek kiválasztón!"
     assert GetPropertyValue(".hetek", "justify-content") == "space-evenly", "Helytelen a rendezés módja!"
 
-@pytest.mark.points(1)
 def test_feladat_8():
     assert GetPropertyValue("hr", "background-color") == "red", "Helytelen/hiányzik a háttérszín beállítás!"
     assert GetPropertyValue("hr", "border-color") == "red", "Helytelen/hiányzik a szegélyszín beállítás!"
 
-@pytest.mark.points(1)
 def test_feladat_9():
     prev_sibl = None #Előző element
     target = None #Keresett element
@@ -112,7 +103,6 @@ def test_feladat_9():
     assert prev_sibl.get("class")[0] == "hetek", "Helytelen a hr elem elhelyezése!"
     assert next_sibl.name == "hr", "Hiányzik a második hr elem!"
 
-@pytest.mark.points(2)
 def test_feladat_10():
     target = None
 
@@ -127,7 +117,6 @@ def test_feladat_10():
     assert children.name == "div", "Nem div az egynap elem első eleme!"
     assert children.find_next_sibling().name == "img", "Nem img az egynap elem második eleme!"
 
-@pytest.mark.points(1)
 def test_feladat_11():
     target = None
     
