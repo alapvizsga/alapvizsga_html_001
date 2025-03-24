@@ -124,3 +124,29 @@ def test_feladat_11():
     assert isinstance(target, bs4.Tag), "Nincs egynap osztályú elem!"
 
     assert GetPropertyValue("egynap", "justify-content") == "space-between", "Helytelen az elrendezés módja, nem CSAK az elemek között van hely!"
+
+def test_feladat_12():
+    target = None #Keresett elem
+    prev_sibl = None #Keresett elem előbbi testvéreleme
+    next_sibl = None #Keresett elem utóbbi testvéreleme
+
+    #Összes egynap osztályú div elem keresése
+    assert len(html_soup.find_all(name="div", class_="egynap")) == 5, "Helytelen számú 'egynap' osztályú div van az oldalon!"
+    
+    haystack = html_soup.find_all(name="div", class_="egynap") #Összes egynap div
+
+    for div_count in range(5): #5 db div-nek kell lennie
+        target = haystack[div_count] #Jelen egynap elem
+            
+        if (div_count == 4): #Utolsó egynap div
+            prev_sibl = target.find_previous_sibling() #Előző testvérelem
+            next_sibl = target.find_next_sibling() #Következő tetvérelem
+
+            assert prev_sibl.name == "hr", f"Nem jó helyen van az utolsó egynap div!" #Az előtte lévő elem hr kell, hogy legyen
+            assert next_sibl == None, f"Nem jó helyen van az utolsó egynap div!" #Utána nem lehet semmi
+        else: #Ha nem az utolsó egynap-ot keressük, akkor előtte és utána is hr elemnek kell lennie
+            prev_sibl = target.find_previous_sibling() #Előző testvérelem
+            next_sibl = target.find_next_sibling() #Következő tetvérelem
+
+            assert prev_sibl.name == "hr", f"Helytelen az egynap div-ek elrendezése!"
+            assert next_sibl.name == "hr", f"Helytelen az egynap div-ek elrendezése!"
