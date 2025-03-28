@@ -148,5 +148,23 @@ def test_feladat_12():
             prev_sibl = target.find_previous_sibling() #Előző testvérelem
             next_sibl = target.find_next_sibling() #Következő tetvérelem
 
-            assert prev_sibl.name == "hr", f"Helytelen az egynap div-ek elrendezése!"
+            #Ha előtte ÉS utána is hr van, csak akkor jó
+            assert prev_sibl.name == "hr", f"Helytelen az egynap div-ek elrendezése!" 
             assert next_sibl.name == "hr", f"Helytelen az egynap div-ek elrendezése!"
+
+def test_feladat_13():
+    #egynap div-ben kép szélesség ellenőrzés
+    assert GetPropertyValue("egynap img", "width") == "230px", "Nem megfelelő az egynap div-ben lévő kép szélessége!"
+
+def test_feladat_14():
+    #Jobb és baloldali margó ellenőrzése
+    assert GetPropertyValue("egynap", "margin-left") == "15%", "Nem megfelelő a bal oldali margó értéke!" 
+    assert GetPropertyValue("egynap", "margin-right") == "15%", "Nem megfelelő a jobb oldali margó értéke!"
+
+def test_feladat_15():
+    menu = [
+    ("hétfő", "Újházi tyúkhúsleves", "Sült csirkecomb, rizi-bizi", "Túró rudi"),
+    ("kedd", "Babgulyás", "Mákos tészta", "Alma"),
+    ("szerda", "Ponty halászlé", "Rakott burgonya", "Szőlő"),
+    ("csütörtök", "Csontleves", "Bécsi szelet, sült burgonya", "Uborkasaláta"),
+    ("péntek", "Tojásleves", "Borsófőzelék, sült virsli", "Kókuszgolyó")]
