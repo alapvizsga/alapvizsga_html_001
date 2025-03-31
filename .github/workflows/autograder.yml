@@ -1,0 +1,27 @@
+name: Autograder
+
+on: [push, pull_request]
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x  # Adjust version as needed
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt || true  # Modify if needed
+
+      - name: Run Autograder
+        run: python my_autograder.py  # Replace with your script
+
+      - name: Upload Grading Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: autograder-results
+          path: results.json

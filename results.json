@@ -1,62 +1,79 @@
-[
-    {
-        "name": "test_file_structure",
-        "status": "passed",
-        "points": 0
+{
+    "scores": {
+        "total": 0
     },
-    {
-        "name": "test_feladat_1",
-        "status": "failed",
-        "points": 1
-    },
-    {
-        "name": "test_feladat_2",
-        "status": "failed",
-        "points": 1
-    },
-    {
-        "name": "test_feladat_3",
-        "status": "failed",
-        "points": 1
-    },
-    {
-        "name": "test_feladat_4",
-        "status": "failed",
-        "points": 2
-    },
-    {
-        "name": "test_feladat_5",
-        "status": "failed",
-        "points": 2
-    },
-    {
-        "name": "test_feladat_6",
-        "status": "failed",
-        "points": 2
-    },
-    {
-        "name": "test_feladat_7",
-        "status": "failed",
-        "points": 1
-    },
-    {
-        "name": "test_feladat_8",
-        "status": "failed",
-        "points": 1
-    },
-    {
-        "name": "test_feladat_9",
-        "status": "failed",
-        "points": 1
-    },
-    {
-        "name": "test_feladat_10",
-        "status": "failed",
-        "points": 2
-    },
-    {
-        "name": "test_feladat_11",
-        "status": "failed",
-        "points": 1
-    }
-]
+    "tests": [
+        {
+            "name": "1. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "2. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "3. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "4. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "5. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "6. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "7. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "8. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "9. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "10. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "11. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "12. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "13. feladat",
+            "status": "failed",
+            "points": 0
+        },
+        {
+            "name": "14. feladat",
+            "status": "failed",
+            "points": 0
+        }
+    ],
+    "output": "Grading complete.",
+    "visibility": "visible"
+}

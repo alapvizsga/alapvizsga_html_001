@@ -1,4 +1,4 @@
-import cssutils, os, bs4
+import cssutils, os, bs4, json
 
 def get_html():
     with open("index.html", encoding="utf-8") as f: #HTML fájl beolvasása
@@ -107,9 +107,11 @@ def test_feladat_10():
     target = None
 
     target = html_soup.find(class_="egynap")
-    children = target.findChild("div")
 
     assert isinstance(target, bs4.Tag), "Nincs egynap osztályú elem!"
+
+    children = target.findChild("div")
+
     assert target.name == "div", "Az egynap osztályú elem nem div típusú!"
     assert target.find_previous_siblings()[0].name == "hr", "Helytelen az egynap elem elhelyezése!"
     assert target.find_previous_siblings()[1].name == "hr", "Helytelen az egynap elem elhelyezése!"
@@ -168,3 +170,50 @@ def test_feladat_15():
     ("szerda", "Ponty halászlé", "Rakott burgonya", "Szőlő"),
     ("csütörtök", "Csontleves", "Bécsi szelet, sült burgonya", "Uborkasaláta"),
     ("péntek", "Tojásleves", "Borsófőzelék, sült virsli", "Kókuszgolyó")]
+
+
+#Tesztek futtatása és kiértékelése
+tests = [
+    {"name": "1. feladat", "func": test_feladat_1, "points": 1},
+    {"name": "2. feladat", "func": test_feladat_2, "points": 1},
+    {"name": "3. feladat", "func": test_feladat_3, "points": 1},
+    {"name": "4. feladat", "func": test_feladat_4, "points": 2},
+    {"name": "5. feladat", "func": test_feladat_5, "points": 2},
+    {"name": "6. feladat", "func": test_feladat_6, "points": 2},
+    {"name": "7. feladat", "func": test_feladat_7, "points": 1},
+    {"name": "8. feladat", "func": test_feladat_8, "points": 1},
+    {"name": "9. feladat", "func": test_feladat_9, "points": 1},
+    {"name": "10. feladat", "func": test_feladat_10, "points": 2},
+    {"name": "11. feladat", "func": test_feladat_11, "points": 1},
+    {"name": "12. feladat", "func": test_feladat_12, "points": 2},
+    {"name": "13. feladat", "func": test_feladat_13, "points": 1},
+    {"name": "14. feladat", "func": test_feladat_14, "points": 1}
+]
+
+test_results = []
+total_score = 0
+
+for test in tests:
+    try: #Ha sikeres, megkapja a pontokat
+        test["func"]()  #Függvény lefuttatása
+        status = "passed" #'passed' státusz sikeres futásnál 
+        total_score += test["points"] #Elért pontszám növelése a feladat pontszámával
+    except AssertionError: #Ha a feladat hibás
+        status = "failed" #'failed' státusz
+
+    test_results.append({
+        "name": test["name"],
+        "status": status,
+        "points": test["points"] if status == "passed" else 0
+    }) #A kiírásra kerülő listához adás
+
+results = {
+    "scores": {"total": total_score},
+    "tests": test_results,
+    "output": "Grading complete.",
+    "visibility": "visible"
+}
+
+# JSON-ba írás
+with open("results.json", "w", encoding="UTF-8") as f:
+    json.dump(results, f, indent=4)
