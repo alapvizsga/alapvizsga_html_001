@@ -170,3 +170,5 @@ def test_feladat_15():
     ("szerda", "Ponty halászlé", "Rakott burgonya", "Szőlő"),
     ("csütörtök", "Csontleves", "Bécsi szelet, sült burgonya", "Uborkasaláta"),
     ("péntek", "Tojásleves", "Borsófőzelék, sült virsli", "Kókuszgolyó")]
+
+    
