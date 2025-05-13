@@ -165,10 +165,21 @@ def test_feladat_14():
 
 def test_feladat_15():
     menu = [
-    ("hétfő", "Újházi tyúkhúsleves", "Sült csirkecomb, rizi-bizi", "Túró rudi"),
-    ("kedd", "Babgulyás", "Mákos tészta", "Alma"),
-    ("szerda", "Ponty halászlé", "Rakott burgonya", "Szőlő"),
-    ("csütörtök", "Csontleves", "Bécsi szelet, sült burgonya", "Uborkasaláta"),
-    ("péntek", "Tojásleves", "Borsófőzelék, sült virsli", "Kókuszgolyó")]
+    ("hétfő", "Újházi tyúkhúsleves", "Sült csirkecomb, rizi-bizi", "Túró rudi", "hetfo_csirkecomb.jpg"),
+    ("kedd", "Babgulyás", "Mákos tészta", "Alma", "kedd_makosteszta.jpg"),
+    ("szerda", "Ponty halászlé", "Rakott burgonya", "Szőlő", "szerda_halaszle.jpg"),
+    ("csütörtök", "Csontleves", "Bécsi szelet, sült burgonya", "Uborkasaláta", "csutortok_rantotthus.jpg"),
+    ("péntek", "Tojásleves", "Borsófőzelék, sült virsli", "Kókuszgolyó", "pentek_borsofozelek.jpg")]
 
-    
+    haystack = html_soup.find_all("div", class_="egynap")
+    assert len(haystack) == 5, "Helytelen számú egynap div van az oldalon!"
+
+    # Az egynap div-en belüli 
+    text_cont = None
+    img = None
+
+    for i in range(0, 6):
+        assert isinstance(haystack[i].find("div"), bs4.Tag), "Nem található div az egyik 'egynap div-ben!'"
+        assert isinstance(haystack[i].find("img"), bs4.Tag), "Nem található kép az egyik 'egynap div-ben!'"
+
+        assert haystack[i].find("img")['src'] == menu[i][-1]
